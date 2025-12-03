@@ -74,16 +74,27 @@ The system runs in a Docker container behind an Apache web server. The Apache se
 ## CAN DO
 
 [X] **Better preprocessing** - The text cleaning sometimes removes important context. Hyphens in compound words are now preserved, but other edge cases might exist.
+
 [] **Model accuracy** - Some neutral words like "test" get high toxicity scores. This suggests the training data might have biases that need fixing.
+
 [X] **Error handling** - When the API is slow or fails, the extension could show better error messages to users.
+
 [] **Caching** - Frequently checked phrases could be cached to speed up responses.
+
 [X] **Rate limiting** - Add protection against abuse to prevent someone from overwhelming the server.
+
 [] **Smaller rephrasing model** - The current 8B parameter model is huge. A smaller, quantized model (2-4GB) would be faster and use less memory.
+
 [] **Multi-language support** - Currently only works with English and what Llamma 3.1 works best with, Adding support for other languages would make it more useful globally (GPT?)
+
 [X] **Context awareness** - The system treats each message independently. Understanding conversation context could improve accuracy.
+
 [] **User feedback** - Allow users to report false positives/negatives to improve the model over time.
+
 [] **Local processing option** - For privacy-conscious users, offer a version that runs entirely in the browser (toxicity detection only, ~3MB).
+
 [] **Multiple rephrasing options** - Instead of one replacement, offer users several alternatives to choose from.
+
 [] **Batch processing** - Allow checking multiple messages at once for better efficiency.
 
 ## File Structure
