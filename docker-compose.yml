@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  hate-speech-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hate-speech-api
+    ports:
+      - "127.0.0.1:5000:5000"
+    volumes:
+      # Persist models locally to avoid re-downloading
+      - ./models:/app/models
+      - ./classifiers:/app/classifiers
+      # Persist SSL certificates (if needed)
+      - ./ssl:/app/ssl
+    environment:
+      - PYTHONUNBUFFERED=1
+      - FLASK_APP=api_server.py
+      - RUN_WITHOUT_SSL=1
+    restart: unless-stopped
+    networks:
+      - hate-speech-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/test')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  hate-speech-network:
+    driver: bridge
+    name: hate-speech-network
