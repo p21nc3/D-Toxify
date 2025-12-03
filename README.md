@@ -4,8 +4,6 @@ A browser extension backend that detects hate speech in online content and autom
 
 ## What This Does
 
-This API powers a browser extension that helps make the internet a kinder place. When you browse social media sites like X (Twitter) or WhatsApp, the extension:
-
 1. **Detects toxic content** - Checks if messages contain hate speech or offensive language
 2. **Shows a warning** - Displays a toxicity score (1-10) so you know how bad it is
 3. **Rephrases automatically** - Replaces hateful words with neutral ones while keeping the meaning
@@ -74,8 +72,6 @@ The API provides these main endpoints:
 The system runs in a Docker container behind an Apache web server. The Apache server handles SSL encryption and forwards requests to the Flask API running on localhost. This setup allows the API to be accessed securely over HTTPS while keeping the backend simple.
 
 ## CAN DO
-
-### Short-term Improvements
 
 [X] **Better preprocessing** - The text cleaning sometimes removes important context. Hyphens in compound words are now preserved, but other edge cases might exist.
 [] **Model accuracy** - Some neutral words like "test" get high toxicity scores. This suggests the training data might have biases that need fixing.
